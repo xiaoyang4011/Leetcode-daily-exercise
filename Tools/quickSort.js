@@ -1,23 +1,45 @@
-var quickSort = function(arr) {
-  if(arr.legth <=1) return arr
 
-  var pivotIndex = Math.floor(arr.length / 2)
-  var pivot = arr.splice(pivotIndex, 1)[0]
+function quickSort(array) {
+  var i = 0
+  var j = array.length - 1
 
-  var left = []
-  var right = []
+  var Sort = function(i, j) {
+    if(i === j) return
 
-  for (var i = 0; i < arr.length; i++) {
-    if(arr[i] < pivot) {
-      left.push(arr[i])
-    } else {
-      right.push(arr[i])
+    var key = array[i]
+    var temp_i = i
+    var temp_j = j
+    var temp
+
+    while(i !== j) {
+      while (array[j] >= key && i < j) {
+        j--
+      }
+
+      while (array[i] <= key && i < j) {
+        i++
+      }
+
+      if(i < j) {
+        temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+      }
     }
+    //相遇了
+    array[temp_i] = array[i]
+    array[i] = key
+
+    Sort(temp_i, i-1)
+    Sort(i+1, temp_j)
   }
 
-  return quickSort(left).concat([pivot], quickSort(right))
+  Sort(i, j)
+
+  return array
 }
 
-var  a = [3, 4, 1, 2, 5, 8, 6, 7]
 
-console.log(quickSort(a))
+
+console.log('-----------------------')
+console.log(quickSort([2,4,1,3,5]))
