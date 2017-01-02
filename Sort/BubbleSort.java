@@ -12,11 +12,11 @@ public class BubbleSort {
     int arrayLen = sortedArray.length;
 
     for(int i = 0; i < arrayLen; i++) {
-      for(int j = 1; j < arrayLen - i; j++){
-        if(sortedArray[j - 1] > sortedArray[j]) {
-          int temp = sortedArray[j - 1];
-          sortedArray[j - 1] = sortedArray[j];
-          sortedArray[j] = temp;
+      for(int j = 0; j < arrayLen - i - 1; j++){
+        if(sortedArray[j] > sortedArray[j + 1]) {
+          int temp = sortedArray[j];
+          sortedArray[j] = sortedArray[j + 1];
+          sortedArray[j + 1] = temp;
         }
       }
     }
