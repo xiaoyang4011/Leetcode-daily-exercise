@@ -8,6 +8,7 @@ public class BubbleSort {
     }
   }
 
+  
   public static void bubbleSort(int[] sortedArray){
     int arrayLen = sortedArray.length;
 
